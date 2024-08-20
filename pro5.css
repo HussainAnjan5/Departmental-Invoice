@@ -1,0 +1,297 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* overflow: hidden; */
+  /* border: 2px solid orange; */
+}
+body{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-repeat: no-repeat;
+    /* background-image: url(/wallpaperflare.com_wallpaper\ \(5\).jpg); */
+    background-size: cover;
+    background: fixed;
+    /* background-repeat: no-repeat; */
+    background-image:url('/wallpaperflare.com_wallpaper\ \(6\).jpg');
+    }
+.container{
+    width: 60%;
+    margin:5vh auto;
+    height: auto;
+    background-color:#5F979F;
+    border: 4px solid rgb(32, 28, 28);
+}
+h1{
+    /* border: 2px solid orange; */
+    height: 9vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+hr{
+    color: black;
+    height: .5vh;
+    background-color: black;
+   width: 95%;
+   margin: auto;
+    border: none;
+}
+
+select{
+    height: 5vh;
+    font-size: 1.1rem;
+    width: 95%;
+    margin: auto;
+    outline: blue;
+    margin-top: 2%;
+    margin-left: 2.5%;
+}
+#prices{
+    margin: 2%;
+    height: 5vh;
+    width: 15vh;
+    /* border: 2px solid orange; */
+}
+.content{
+    display: flex;
+    justify-content: space-around;
+    height: auto;
+    align-items: center;
+    /* border: 2px solid orange; */
+    width: 80%;
+    margin: auto;
+}
+.edit{
+    margin:1% 0 2% 2.5%;
+    /* border: 2px solid rgb(255, 17, 0); */
+    height: 7.5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.edit input{
+    height: 3.5vh;
+    background-color: #EAECF0;
+    width: 10vw;
+    border-radius: 3px;
+    outline: none;
+    border: none;
+    padding: 10px;
+    font-size: 1rem;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+.edit:last-child{
+    width: 9vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+
+}
+.btns{
+    border-radius: 3px;
+    display: flex;
+    height: 3vh;
+    width: 3vw;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    background-color: rgb(35, 83, 240);
+    border: none;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;   
+}
+#clear{
+    border-radius: 3px;
+    height: 3.5vh;
+    width: 4vw;
+    display: flex;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+    background-color: orange;
+    border: none;
+    display: flex;
+    border: none;
+    justify-content: space-around;
+    align-items: center;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+.price2 input{
+    background-color: white;
+}
+
+#add{
+    border-radius: 3px;
+    height: 3.5vh;
+    width: 4vw;
+    display: flex;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+    background-color: orange;
+    border: none;
+    display: flex;
+    border: none;
+    justify-content: space-around;
+    align-items: center;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+button{
+    cursor: pointer;
+}
+section{
+    height: 7vh;
+    width: 95%;
+    font-weight: bolder;
+    color: white;
+    display: flex;
+    border-radius: 5px;
+    /*border: 2px solid red;
+    */justify-content:space-around;
+    align-items: center;
+    background-color: #33393F;
+    margin: 2% 0 1% 2.5%;
+}
+
+span:nth-child(1){
+    /* border: 2px solid blue; */
+    margin-left: 2%;
+}
+span:nth-child(2){
+    /* border: 2px solid blue; */
+    margin-left: 2.5%;
+}
+span:nth-child(3){
+    /* border: 2px solid blue; */
+    margin-left: 5%;
+}
+span:nth-child(4){
+    /* border: 2px solid blue; */
+    margin-left: 2%;
+}
+table{
+    height: 4vh;
+    width: 80%;
+    font-weight: bolder;
+    color: #1f2020e1;
+    margin-left: 3%;
+    /* background-color: #f1ffffe1; */
+}
+
+tbody tr{
+    text-align: center; 
+    width:113%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* border: 2px solid red; */
+    /* display: none; */
+}
+
+tbody td{
+    width:18%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* border: 2px solid red; */
+    /* width:15vw; */
+    /* display: none; */
+    height: 4vh;
+}
+
+tbody td:last-child{
+    width:4vw;
+}
+aside{
+    /* border: 2px solid orange; */
+    width: 95%;
+    height: 37vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+    margin: auto;
+    margin-top: 2%   ;
+}
+aside .edits{
+    /* border: 2px solid rgb(255, 17, 0); */
+    height: 7.5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.edits input{
+    /*margin:0 0 2% 2.5%;
+    */height: 3.5vh;
+    background-color: #EAECF0;
+    width: 10vw;
+    border-radius: 3px;
+    outline: none;
+    border: none;
+    padding: 10px;
+    font-size: 1rem;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+.save,.print{
+    height: 5vh;
+    width: 95%;
+    font-weight: bolder;
+    color: white;
+    display: flex;
+    border-radius: 4px;
+    border: none;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+    /*margin: auto;
+    */background-color: #33393F;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+
+.save{
+    background-color: #2B9647;
+}
+.price4{
+    /* border: 2px solid red; */
+    width: 10%;
+    display: flex;
+    justify-content: flex-end;
+}
+footer{
+
+    margin-bottom: 8%;
+    margin-top: 1%;
+}
+footer button{
+    margin: auto;
+}
+.hrs{
+    margin-left: 6%;
+    width: 110%;
+    height: 1px;
+    background-color: rgba(56, 55, 55, 0.705);
+    border: none;
+}

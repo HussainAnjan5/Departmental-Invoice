@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Templete</title>
+    <link rel="stylesheet" href="pro5.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Departmental Invoice</h1>
+        <hr>
+        <select name="menu" id="itemslist">
+            <option class="opt" value="Chose below option">Open This Select Menu</option>
+            <option class="opt" value="10" id="penc">Pencil ✏ </option>
+            <option class="opt" value="60" id="coffe">Coffee 🍵 </option>
+            <option class="opt" value="120" id="milk">Milk 🥤</option>
+            <option class="opt" value="160" id="Cold">Cold Drink🔵 </option>
+        </select>
+        <div class="content">
+            <div class="edit price1">
+                <h4>Price</h4>
+                <input type="text" id="price" readonly placeholder="Price">
+            </div>
+            <div class="edit price2">
+                <h4>Quantity</h4>
+                <input type="number" id="quantity" placeholder="Quantity">
+            </div>
+            <div class="edit price3">
+                <h4>Amount</h4>
+                <input type="number" name="" id="amount"  name="amt" readonly placeholder="Amount">
+
+            </div>
+            <div class="edit price4">
+                <button id="add">Add</button>
+                <button id="clear" onclick="clearstorage()">Clear</button>
+            </div>
+        </div>
+        <hr style="background-color: rgb(148, 27, 27);">
+        <section>
+            <span class="name">Product Name</span>
+            <span class="name">Price</span>
+            <span class="name">Quantity</span>
+            <span class="name">Amount</span>
+            <span class="name">Delete</span>
+        </section>
+        <table>
+            <tbody class="tablebody">
+                <tr>
+                    <td class="row"></td>
+                    <td class="nme"></td>
+                    <td class="prc"></td>
+                    <td class="qty"></td>
+                    <td class="mount"></td>
+                    <td><button class="btn"></button></td>
+                </tr>
+            </tbody>
+        </table>
+        <hr style="background-color: rgb(148, 27, 27);">
+        <aside>
+            <div class="edits total">
+                <h5>Total</h5>
+                <input type="number" value="" name="total" id="total" readonly>
+            </div>
+            <div class="edits discount">
+                <h5>Discount</h5>
+                <input type="text" name="" value="5%" id="discount" readonly>
+            </div>
+            <div class="edits tax">
+                <h5>Tax</h5>
+                <input type="text" name="" value="15%" id="tax" readonly>
+            </div>
+            <div class="edits net">
+                <h5>Net Amount</h5>
+                <input type="number" name="" id="netamount" readonly>
+            </div>
+        </aside>
+        <footer>
+            <button class="save">Save Invoice</button>
+            <button class="print">Print</button>
+        </footer>
+    </div>
+
+
+    <script>
+        let select = document.querySelector('#itemslist');
+        let opt = document.querySelector('.opt');
+        let price = document.querySelector('#price');
+        let quantity = document.querySelector('#quantity');
+        let amount = document.querySelector('#amount');
+        let add = document.querySelector("#add")
+        let nme = document.querySelector(".nme")
+        let prc = document.querySelector(".prc")
+        let qty = document.querySelector(".qty")
+        let mount = document.querySelector("#mount")
+        let btn = document.querySelector(".btn")
+        let row = document.querySelector(".row")
+        let total = document.querySelector("#total")
+        let discount = document.querySelector("#discount")
+        let tax = document.querySelector("#tax")
+        let netamount = document.querySelector("#netamount")
+
+        select.addEventListener("click", () => {
+            price.value = select.value;
+        })
+        let el = document.querySelector(".container");
+        el.addEventListener("input", () => {
+            let bill = select.value * quantity.value;
+            amount.value = bill;
+
+            getTotal();
+        })
+
+        function getandupdate() {
+            if (localStorage.getItem("itemjson") == null) {
+                itemjsonarr = [];
+                itemjsonarr.push([select.options[select.selectedIndex].innerHTML, price.value, quantity.value, amount.value])
+                localStorage.setItem("itemjson", JSON.stringify(itemjsonarr))
+            } else {
+                itemjsonarrstr = localStorage.getItem("itemjson")
+                itemjsonarr = JSON.parse(itemjsonarrstr)
+                itemjsonarr.push([select.options[select.selectedIndex].innerHTML, price.value, quantity.value, amount
+                    .value
+                ])
+                localStorage.setItem("itemjson", JSON.stringify(itemjsonarr))
+            }
+            update()
+        }   
+        function update() {
+            if (localStorage.getItem("itemjson") == null) {
+                itemjsonarr = [];
+                localStorage.setItem("itemjson", JSON.stringify(itemjsonarr))
+            } else {
+                itemjsonarrstr = localStorage.getItem("itemjson")
+                itemjsonarr = JSON.parse(itemjsonarrstr)
+            }
+
+            let tab = document.querySelector(".tablebody");
+            let str = " ";
+            itemjsonarr.forEach((element, index) => {
+                str += `
+                <tr>
+                    <th class="row">${index+1}</th>
+                    <td class="nme">${element[0]}</td>
+                    <td class="prc">${element[1]}</td>
+                    <td class="qty">${element[2]}</td>
+                    <td class="mount" id="amount">${element[3]}</td>
+                    <td><button class="btns" onclick="deleted(${index})">delete</button></td>
+                </tr> <hr class="hrs">`
+            }); 
+            total.innerHTML = amount.value;
+            tab.innerHTML = str;
+
+        }
+        add.addEventListener("click", getandupdate);
+        update();
+
+        function getTotal(){
+                var sum=0;
+                var amts=document.getElementById("#amount");
+                for (let index=0; index<amts.length; index++){
+                    var amt=amts[index].value;
+                    sum+=amt;
+                }
+                alert(sum)
+                total.value=sum;
+    }
+        function deleted(itemindex) {
+            // console.log("Delete", itemindex);
+            itemjsonarrstr = localStorage.getItem('itemjson')
+            itemjsonarr = JSON.parse(itemjsonarrstr)
+            //Delete item index from array
+            itemjsonarr.splice(itemindex, 1)
+            localStorage.setItem("itemjson", JSON.stringify(itemjsonarr))
+            update();
+        }
+
+        function clearstorage() {
+            if (confirm("Do you really want to clear"));
+            console.log("updating list")
+            localStorage.clear()
+            update()
+        }
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+<!-- // let select = document.querySelector('#itemslist');
+        // let price = document.querySelector('#price');
+        // let quantity = document.querySelector('#quantity');
+        // let amount = document.querySelector('#amount');
+        // let add=document.querySelector("#add")
+        // let nme=document.querySelector(".nme")
+        // let prc=document.querySelector(".prc")
+        // let qty=document.querySelector(".qty")
+        // let mount=document.querySelector(".mount")
+        // let opt=document.getElementsByTagName("option")
+        
+        // select.addEventListener("click", () => {
+        //     price.value = select.value;
+
+
+        // })
+        // let el = document.querySelector(".container");
+        // el.addEventListener("click", () => {
+        //     let bill = select.value * quantity.value;
+        //     amount.value = bill;
+            
+        // })        
+        // add.addEventListener("click",()=>{
+        //     nme.innerHTML=select.options[select.selectedIndex].innerHTML;
+        //     qty.innerHTML=quantity.value;
+        //     prc.innerHTML=price.value;
+        //     mount.innerHTML=amount.value
+        // }) -->
